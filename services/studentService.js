@@ -10,4 +10,11 @@ export const createStudent = async(student) => {
     
     return studentId;
 }
-export const update = async (Student)
+export const update = async (student) => {
+    const [result] = await pool.query ("UPDATE book SET name= ?, course= ? WHERE id= ?", [book.name, book.author, book.id])
+}
+
+export const deleteStudent = async (id) => {
+    const deleteStudent = await studentModel.remove(id);
+    return deleteStudent;
+}

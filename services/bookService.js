@@ -1,11 +1,11 @@
 import * as bookModel from '../models/bookModels.js';
 
-export const fetchAllBooks = async() =>{
+export const fetchAllBook = async() =>{
     const book = await bookModel.fetch();
     return book;
 }
 
-export const createBook = async(books) => {
+export const createBook = async(book) => {
     const bookId  = await studentModel.insert(book);
     
     return bookId;
