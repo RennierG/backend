@@ -32,8 +32,8 @@ export const editBook = async (req, res ) => {
     const book = {id: parseInt(id), name , author};
 
     try{
-        const updateBook = await bookService.updateBook(book);
-        resstatus(200).json({
+        const updateBook = await bookService.update(book);
+        restatus(200).json({
             success: true,
             message: updateBook
         });
