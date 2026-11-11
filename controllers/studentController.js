@@ -33,7 +33,7 @@ export const editStudent = async (req, res ) => {
     const student = {id: parseInt(id), name , course};
 
     try{
-        const updateStudent = await studentService.update(student);
+        const updateStudent = await studentService.updateStudent(student);
         res.status(200).json({
             success: true,
             message: updateStudent
