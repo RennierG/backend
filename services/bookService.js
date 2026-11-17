@@ -1,20 +1,27 @@
 import * as bookModel from '../models/bookModels.js';
 
-export const fetchAllBook = async() =>{
-    const book = await bookModel.fetch();
-    return book;
-}
+export const fetchAllBook = async() => {
+    return await bookModel.fetch();
+};
 
 export const createBook = async(book) => {
-    const bookId  = await bookModel.insert(book);
-    
-    return bookId;
-}
-export const update = async (book) => {
-    const [result] = await pool.query ("UPDATE book SET name= ?, author= ? WHERE id= ?", [book.name, book.author, book.id])
-}
+    if (!book.name || !book.author) {
+        throw new Error("Name and Author is required");
+    }
+    return await bookModel.insert(book);
+};
 
-export const deleteBook = async (id) => {
-    const deleteBook = await bookModel.remove(id);
-    return deleteBook;
-}
+export const updateBook = async(book) => {
+    if (!book.name || !book.author) {
+        throw new Error("Name and Author is required");
+    }
+    return await bookModel.update(book);
+};
+
+export const deleteBook = async(id) => {
+    const affected = await bookModel.remove(id);
+    if (affected === 0) {
+        throw new Error("Book does not exist!");
+    }
+    return affected;
+};
