@@ -3,6 +3,7 @@ import cors from 'cors';
 
 import bookRoutes from './routes/bookRoutes.js';
 import studentRoute from './routes/studentRoute.js';
+import userRoute from "./routes/userRoute.js";
 
 let corsOptions = {
     origin: 'http://localhost:5173',
@@ -17,13 +18,13 @@ app.use(cors(corsOptions));
 
 app.use('/book', bookRoutes);
 app.use('/student', studentRoute);
+app.use('/user', userRoute);
 
 try {
-    const port =3000;
+    const port = 3000;
     app.listen(port, () => {
-        console.log(`listening to port ${port}...`);        
+        console.log(`listening to port ${port}...`);
     });
 } catch (e) {
     console.log(e);
 }
-
